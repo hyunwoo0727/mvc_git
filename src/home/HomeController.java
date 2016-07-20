@@ -18,7 +18,6 @@ public class HomeController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
-		System.out.println(path);
 		String result = path.substring(path.lastIndexOf("/")+1, path.indexOf("."));
 		System.out.println(result);
 		RequestDispatcher dis 

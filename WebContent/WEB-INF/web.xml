@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-	<display-name>mvc</display-name>
+	<display-name>mvc_git</display-name>
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>*</servlet-class>
@@ -11,6 +11,10 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/resources/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -33,12 +37,4 @@
 			<include-prelude>/WEB-INF/global/variable.jspf</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
-	<mime-mapping>
-  <extension>css</extension>
-  <mime-type>text/css</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-  	<extension>xml</extension>
-  <mime-type>text/xml</mime-type>
-</mime-mapping>
 </web-app>
