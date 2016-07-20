@@ -8,7 +8,6 @@
 		border: none; width: 400px; height: 400px;
 	}
 	</style>
-
 	<div class="box">
 		검색 페이지 <br/>
 	
