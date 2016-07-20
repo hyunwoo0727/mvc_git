@@ -39,7 +39,9 @@
 	text-decoration: none;
 }
 #nav li a:hover:not(.active) {
-    background-color: #50c5f1;
+    background-color: white;
+    color: black;
+    font-weight: bold;
 }
 .active {
     background-color: black;

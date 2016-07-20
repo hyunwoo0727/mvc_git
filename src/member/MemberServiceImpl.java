@@ -20,6 +20,8 @@ public class MemberServiceImpl implements MemberService{
 	
 	private MemberServiceImpl() {
 		dao =  MemberDAO.getInstance();
+		this.map();
+		this.session = this.map.get("hong");
 	}
 	public static MemberServiceImpl getInstance() {
 		return instance;

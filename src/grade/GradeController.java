@@ -1,4 +1,4 @@
-package home;
+package grade;
 
 import java.io.IOException;
 
@@ -9,23 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class HomeController
- */
-@WebServlet({"/home.do","/top.do","/header.do","/footer.do","/end.do"})
-public class HomeController extends HttpServlet {
+@WebServlet({"/grade/main.do","/grade/regist.do","/grade/update.do","/grade/delete.do",
+	"/grade/list.do","/grade/count.do","/grade/search.do"})
+public class GradeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
 		String result = path.substring(path.lastIndexOf("/")+1, path.indexOf("."));
+		path = path.split("/")[1];
 		RequestDispatcher dis 
-		 = request.getRequestDispatcher("/WEB-INF/global/"+result+".jsp");
+		 = request.getRequestDispatcher("/WEB-INF/"+path+"/"+result+".jsp");
 		dis.forward(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -11,5 +11,11 @@ public class Test {
 	public static void main(String[] args) {
 		String str = "/global/member/home.do";
 		System.out.println();
+		String path = str;
+		
+		String result = path.substring(path.lastIndexOf("/")+1, path.indexOf("."));
+		System.out.println(result);
+		path = path.substring(0, path.indexOf("/"+result));
+		System.out.println(path);
 	}
 }
