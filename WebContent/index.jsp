@@ -10,7 +10,7 @@
 <%-- 		<form action="${context}/home.do">
 			<input type="submit" value="HOME" />	
 		</form> --%>
-		<a href="${context}/home.do">홈으러</a>
+		<a href="${context}/home.do">홈으러zzzz</a>
 	</div>
 </body>
 </html>
