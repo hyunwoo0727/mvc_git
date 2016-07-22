@@ -86,7 +86,7 @@ public class MemberServiceImpl implements MemberService{
 		Iterator<?> it = keys.iterator();
 		while(it.hasNext()){
 			MemberBean tempBean = (MemberBean) map.get(it.next());
-			if(tempBean.getName().equals(word)){
+			if(tempBean.getName().equals(word) || tempBean.getId().equals(word)){
 				findList.add(tempBean);
 			}
 		}
@@ -100,7 +100,6 @@ public class MemberServiceImpl implements MemberService{
 		while(it.hasNext()){
 			allList.add((MemberBean) this.map.get(it.next()));
 		}
-		
 		return allList;
 	}
 	public MemberBean getSession() {

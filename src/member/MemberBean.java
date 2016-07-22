@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String id, pw, name, gender, regDate, ssn, proflieImg, email, birth;
+	private String id, pw, name, gender, regDate, ssn, profileImg, email, birth;
 	private int age;
 
 	public MemberBean() {
@@ -76,13 +76,13 @@ public class MemberBean implements Serializable {
 		this.birth = ssn.split("-")[0];
 		this.ssn = ssn;
 	}
-
+	
 	public String getProfileImg() {
-		return proflieImg;
+		return profileImg;
 	}
 
-	public void setProfileImg(String proflieImg) {
-		this.proflieImg = proflieImg;
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
 	}
 
 	public void setName(String name) {
@@ -108,10 +108,9 @@ public class MemberBean implements Serializable {
 	public String getBirth() {
 		return birth;
 	}
-
 	@Override
 	public String toString() {
 		return "MemberBean [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + ", regDate=" + regDate
-				+ ", ssn=" + ssn + ", proflieImg=" + proflieImg + ", email=" + email + ", age=" + age + "]";
+				+ ", ssn=" + ssn + ", proflieImg=" + profileImg + ", email=" + email + ", age=" + age + "]";
 	}
 }

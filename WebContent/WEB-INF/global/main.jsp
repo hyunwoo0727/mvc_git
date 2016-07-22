@@ -7,7 +7,7 @@
 	<div id="section">
 		<h2>
 			회원관리
-			<%=session.getAttribute("name") + " 님 환영합니다"%></h2>
+			${name } 님 환영합니다</h2>
 	</div>
 <jsp:include page="footer.jsp" />
 <jsp:include page="end.jsp" />

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../global/top.jsp" />
-<jsp:include page="../global/header.jsp" />
-<jsp:include page="../global/nav.jsp" />
+<jsp:include page="../../global/top.jsp" />
+<jsp:include page="../../global/header.jsp" />
+<jsp:include page="../../global/nav.jsp" />
 	<style>
 	table {
 		font-family: arial, sans-serif;
@@ -19,7 +19,7 @@
 	}
 	</style>
 	<div class="box">
-		목록보기 <br />
+		검색 결과 <br />
 		<table>
 			<tr>
 				<th>ID</th>
@@ -27,18 +27,9 @@
 				<th>REGDATE</th>
 				<th>BIRTH</th>
 			</tr>
-			<c:forEach items="${list}" var="member">
-				<tr>
-					<td><a href="${context}/member.do?action=detail&page=detail&id=${member.id}">${member.id}</a></td>
-					<td>${member.name}</td>
-					<td>${member.regDate}</td>
-					<td>${member.birth}</td>
-				</tr>
-			</c:forEach>
-			
 		</table>
 		<a href="${context}/global.do"><img src="${img}/home.png" alt="home" width="50" height="50"/></a>
 		<a href="${context}/member.do?action=logout"><img src="${img}/logout.png" alt="home" width="50" height="50"/></a>
 	</div>
-<jsp:include page="../global/footer.jsp" />
-<jsp:include page="../global/end.jsp" />
+<jsp:include page="../../global/footer.jsp" />
+<jsp:include page="../../global/end.jsp" />

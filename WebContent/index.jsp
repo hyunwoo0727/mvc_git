@@ -7,9 +7,10 @@
 </head>
 <body>
 	<div>
-		<form action="${context}/home.do">
+<%-- 		<form action="${context}/home.do">
 			<input type="submit" value="HOME" />	
-		</form>
+		</form> --%>
+		<a href="${context}/home.do">홈으러</a>
 	</div>
 </body>
 </html>
