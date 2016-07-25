@@ -3,14 +3,9 @@
 <jsp:include page="../global/top.jsp" />
 <jsp:include page="../global/header.jsp" />
 <jsp:include page="../global/nav.jsp" />
-	<style type="text/css">
-	#member_detail{border: 3px solid black; width: 70%;height: 300px; margin: 0 auto;border-collapse: collapse;}
-	#member_detail tr{border: 1px solid darkgray; height: 15%;}
-	#member_detail tr td{border: 1px solid darkgray; font-size: x-large;}
-	.fontBold{font-weight: bold;}
-	.bg_color_yellow{background-color: #A9F5A9;}
-	</style>
+<link rel="stylesheet" href="${css}/member.css" />
 	<div class="box" style="width: 70%;">
+		<h1>회원 정보</h1>
 		<table id="member_detail">
 			<tr>
 				<td rowspan="5" style="width: 30%;"><img src="${img}/member/${user.profileImg}" width="300" height="300" /></td>

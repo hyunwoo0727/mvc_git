@@ -3,17 +3,10 @@
 <jsp:include page="../global/top.jsp" />
 <jsp:include page="../global/header.jsp" />
 <jsp:include page="../global/nav.jsp" />
-	<link rel="stylesheet" href="${css}/member.css" />
-	<style type="text/css">	
-	#member_detail{border: 3px solid black; width: 70%;height: 300px; margin: 0 auto;border-collapse: collapse;}
-	#member_detail tr{border: 1px solid darkgray; height: 15%;}
-	#member_detail tr td{border: 1px solid darkgray; font-size: x-large;}
-	.fontBold{font-weight: bold;}
-	.bg_color_yellow{background-color: #A9F5A9;}
-	</style>
+<link rel="stylesheet" href="${css}/member.css" />
 	<div class="box">
+		<h1>회원 정보 수정</h1>
 		<form action="${context}/member.do" method="post">
-		<input type="hidden" name="id" value="${user.id}" />
 		<input type="hidden" name="action" value="update" />
 		<input type="hidden" name="page" value="detail" />		
 			<table id="member_detail">
@@ -51,7 +44,7 @@
 					<td colspan="2">${user.regDate}</td>
 				</tr>
 			</table>	
-			<input class="btn" type="submit" value="수정" />
+			<input class="btn" type="submit" value="수정" /> <input class="btn" type="reset" value="취소" />
 		</form>	
 		<a href="${context}/global.do"><img src="${img}/home.png" alt="home" width="50" height="50"/></a>
 		<a href="${context}/member.do?action=logout"><img src="${img}/logout.png" alt="home" width="50" height="50"/></a>

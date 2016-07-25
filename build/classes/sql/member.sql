@@ -33,7 +33,7 @@ update member set phone='010-7350-5042'
 
 select count(*) cnt from member
 
-update member set profile_img= id||'.png';
+update member set profile_img= 'default.jpg' where id ='jongjun';
 
 
 

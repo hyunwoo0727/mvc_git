@@ -22,8 +22,10 @@ public class MemberController extends HttpServlet {
 		Separator.init(request, response);
 		MemberService service = MemberServiceImpl.getInstance();
 		MemberBean memBean = new MemberBean();
-		List<?> list = new ArrayList<MemberBean>();
 		switch (Separator.command.getAction()) {
+			case "move":
+				DispatcherServlet.send(request, response, Separator.command);
+				break;
 			case "login": 
 				memBean.setId(request.getParameter("id"));
 				memBean.setPw(request.getParameter("pw"));
@@ -35,6 +37,7 @@ public class MemberController extends HttpServlet {
 					Separator.command.setPage("login");
 				}
 				Separator.command.setView();
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
 			case "regist":	 
 				memBean.setRegDate();
@@ -49,13 +52,14 @@ public class MemberController extends HttpServlet {
 					Separator.command.setPage("regist");
 					Separator.command.setView();
 				}
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
 			case "list":
-				list = service.list();
-				request.setAttribute("list", list);
+				request.setAttribute("list", service.list());
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
 			case "update": 
-				memBean.setId(request.getParameter("id"));
+				memBean = (MemberBean) request.getSession().getAttribute("user");
 				memBean.setPw(request.getParameter("pw"));
 				memBean.setEmail(request.getParameter("email"));
 				if(service.update(memBean)==1){
@@ -64,12 +68,7 @@ public class MemberController extends HttpServlet {
 					Separator.command.setPage("detail");
 					Separator.command.setView();
 				}
-				break;
-			case "detail":
-				String id = request.getParameter("id");
-				if(id!=null){
-					request.setAttribute("user", service.findById(id));
-				}
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
 			case "delete":
 				memBean.setId(request.getParameter("id"));
@@ -81,22 +80,28 @@ public class MemberController extends HttpServlet {
 					Separator.command.setPage("delete");
 				}
 				Separator.command.setView();
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
-			case "find_by": 
-				list = service.findBy(request.getParameter("word"));
-				request.setAttribute("list", list);
+			case "find_by_id": 
+				request.setAttribute("user", service.findById(request.getParameter("keyword")));
+				DispatcherServlet.send(request, response, Separator.command);
+				break;
+			case "find_by_name": 
+				request.setAttribute("list", service.findBy(request.getParameter("keyword")));
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
 			case "count": 
 				request.setAttribute("cnt", service.count());
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
 			case "logout":	
 				Separator.command.setDirectory("home");
 				Separator.command.setView();
 				request.getSession().invalidate();
+				DispatcherServlet.send(request, response, Separator.command);
 				break;
 			default:
 				break;
 		}
-		DispatcherServlet.send(request, response, Separator.command);
 	}	
 }

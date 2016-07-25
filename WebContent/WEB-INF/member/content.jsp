@@ -5,7 +5,7 @@
 		<h1>회원관리</h1> <br />
 		<ol>
 			<li><a href="${context}/member.do?action=list&page=list">전체보기</a></li>
-			<li><a href="${context}/member.do?action=detail&page=detail">내 정보보기</a></li>
+			<li><a href="${context}/member.do?page=detail">내 정보보기</a></li>
 			<li><a href="${context}/member.do?page=update">내정보수정</a></li>
 			<li><a href="${context}/member.do?page=delete">탈퇴</a></li>
 			<li><a href="${context}/member.do?page=find_by">검색</a></li>
