@@ -13,32 +13,28 @@ import bank.AccountServiceImp;
 public class MemberServiceImpl implements MemberService{
 	private Map<String,MemberBean> map;
 	private MemberDAO dao;
-	private MemberBean session;
+	
 	AccountService accService = AccountServiceImp.getInstance();
 	
 	private static MemberServiceImpl instance = new MemberServiceImpl();
 	
 	private MemberServiceImpl() {
 		dao =  MemberDAO.getInstance();
-		this.map();
-		this.session = this.map.get("hong");
 	}
 	public static MemberServiceImpl getInstance() {
 		return instance;
 	}
 	@Override
-	public String login(MemberBean mBean) {
-		String result = null;
+	public MemberBean login(MemberBean mBean) {
 		if(mBean.getId()==null || mBean.getPw()==null){
 			return null;
 		}
 		if(this.checkLogin(mBean)){	
 			this.map();
-			session = (MemberBean) map.get(mBean.getId());
-			result = session.getName();
 			accService.map();
+			return map.get(mBean.getId());
 		}
-		return result;
+		return null;
 	}
 	@Override
 	public Map<?, ?> map() {
@@ -48,14 +44,16 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public int regist(MemberBean mBean) {
-		return dao.insert(mBean);
+		if(dao.findByPK(mBean.getId())!=null){
+			return dao.insert(mBean);
+		}
+		return 0;
 	}
 	@Override
 	public int update(MemberBean mBean) {
-		int result= dao.updatePw(mBean);
+		int result = dao.updatePw(mBean);
 		if(result==1){
-			this.session = dao.findByPK(mBean.getId());
-			this.map.replace(session.getId(), session);
+			this.map.replace(mBean.getId(), dao.findByPK(mBean.getId()));
 		}
 		return result;
 	}
@@ -65,9 +63,6 @@ public class MemberServiceImpl implements MemberService{
 		MemberBean temp = (MemberBean) map.get(mBean.getId());
 		if(temp.getPw().equals(mBean.getPw())){
 			result = dao.deleteMember(mBean.getId());
-			if(result==1){
-				session = null;
-			}
 		}
 		return result;
 	}
@@ -102,9 +97,6 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return allList;
 	}
-	public MemberBean getSession() {
-		return session;
-	}
 	public boolean checkLogin(MemberBean mBean) {
 		boolean loginOk = false;
 		MemberBean m = dao.findByPK(mBean.getId());
@@ -112,11 +104,5 @@ public class MemberServiceImpl implements MemberService{
 			loginOk = true;
 		}
 		return loginOk;
-	}
-	@Override
-	public void logOut(MemberBean mBean) {
-		if(mBean.getId().equals(session.getId()) && mBean.getPw().equals(session.getPw())){
-			this.session = null;
-		}  
 	}
 }

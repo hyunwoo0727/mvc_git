@@ -31,7 +31,7 @@ public class MemberDAO {
 	}
 	public int insert(MemberBean mBean){
 		int result = 0;
-		String sql = "INSERT INTO MEMBER(ID,PW,NAME,REGDATE,SSN,EMAIL,PROFILE_IMG) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO MEMBER(ID,PW,NAME,REGDATE,SSN,EMAIL,PROFILE_IMG,PHONE) VALUES(?,?,?,?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mBean.getId());
@@ -41,6 +41,8 @@ public class MemberDAO {
 			pstmt.setString(5, mBean.getSsn());
 			pstmt.setString(6, mBean.getEmail());
 			pstmt.setString(7, mBean.getProfileImg());
+			pstmt.setString(8, mBean.getPhone());
+			System.out.println(mBean);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -92,6 +94,7 @@ public class MemberDAO {
 				findBean.setSsn(rs.getString("SSN"));
 				findBean.setEmail(rs.getString("EMAIL"));
 				findBean.setProfileImg(rs.getString("PROFILE_IMG"));
+				findBean.setPhone(rs.getString("PHONE"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -114,6 +117,7 @@ public class MemberDAO {
 				tempBean.setSsn(rs.getString("SSN"));
 				tempBean.setEmail(rs.getString("EMAIL"));
 				tempBean.setProfileImg(rs.getString("PROFILE_IMG"));
+				tempBean.setPhone(rs.getString("PHONE"));
 				memberMap.put(tempBean.getId(), tempBean);
 			}
 			

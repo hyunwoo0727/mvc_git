@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String id, pw, name, gender, regDate, ssn, profileImg, email, birth;
+	private String id, pw, name, gender, regDate, ssn, profileImg, email, birth,phone;
 	private int age;
 
 	public MemberBean() {
@@ -107,6 +107,15 @@ public class MemberBean implements Serializable {
 
 	public String getBirth() {
 		return birth;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public int getAge() {
+		return age;
 	}
 	@Override
 	public String toString() {

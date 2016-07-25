@@ -18,7 +18,7 @@
 		<input type="hidden" name="page" value="detail" />		
 			<table id="member_detail">
 				<tr>
-					<td rowspan="5" style="width: 30%;"><img src="${img}/member/${user.profileImg}" alt="wwwe.com" width="300" height="300" /></td>
+					<td rowspan="6" style="width: 30%;"><img src="${img}/member/${user.profileImg}" alt="wwwe.com" width="300" height="300" /></td>
 					<td class="fontBold bg_color_yellow" style="width: 20%;">ID</td>
 					<td style="width: 40%;">${user.id}</td>
 				</tr>
@@ -33,6 +33,10 @@
 				<tr>
 					<td class="fontBold bg_color_yellow">이메일</td>
 					<td><input type="text" name="email" value="${user.email}" /></td>
+				</tr>
+				<tr>
+					<td class="fontBold bg_color_yellow">전화번호</td>
+					<td>${user.phone }</td>
 				</tr>
 				<tr>
 					<td class="fontBold bg_color_yellow">성별</td>

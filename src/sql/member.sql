@@ -6,7 +6,7 @@
 --				+ "ssn varchar2(8)"
 --				+ ")";
 
-alter table member add (email varchar2(20));
+alter table member modify (email varchar2(50));
 
 alter table member add(profile_img varchar2(100));
 
@@ -23,11 +23,13 @@ values('you2','1','유관순',null,'010706-4');
 select * from member where id='you';
 
 
-update member set pw='1324' where id='mingky10';
+update member set email='2hwooo@naver.com' where id='mingky10';
 
 delete from member where id='2hwooo';
 
 select * from member;
+
+update member set phone='010-7350-5042'
 
 select count(*) cnt from member
 
