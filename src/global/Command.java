@@ -14,7 +14,6 @@ public class Command implements Orderable {
 		this.action = action; 
 		this.page = page;
 		this.setView();
-		System.out.println(this.view);
 	}
 	public Command(String directory,String action,String page
 			,String keyField,String keyword) {

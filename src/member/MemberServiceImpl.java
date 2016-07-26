@@ -9,32 +9,36 @@ import java.util.Set;
 
 import bank.AccountService;
 import bank.AccountServiceImp;
+import subject.SubjectBean;
+import subject.SubjectDAO;
+import subject.SubjectMember;
 
 public class MemberServiceImpl implements MemberService{
 	private Map<String,MemberBean> map;
-	private MemberDAO dao;
+	private MemberDAO dao =  MemberDAO.getInstance();
+	private SubjectDAO sdao = SubjectDAO.getInstance();
 	
 	AccountService accService = AccountServiceImp.getInstance();
 	
 	private static MemberServiceImpl instance = new MemberServiceImpl();
 	
 	private MemberServiceImpl() {
-		dao =  MemberDAO.getInstance();
 	}
 	public static MemberServiceImpl getInstance() {
 		return instance;
 	}
 	@Override
-	public MemberBean login(MemberBean mBean) {
-		if(mBean.getId()==null || mBean.getPw()==null){
-			return null;
-		}
+	public SubjectMember login(MemberBean mBean) {
+		SubjectMember sm = null;
 		if(this.checkLogin(mBean)){	
 			this.map();
 			accService.map();
-			return map.get(mBean.getId());
+			sm = new SubjectMember();
+			SubjectBean sb = sdao.findById(mBean.getId());
+			MemberBean mb = map.get(mBean.getId());
+			sm = this.makeSM(mb, sb);
 		}
-		return null;
+		return sm;
 	}
 	@Override
 	public Map<?, ?> map() {
@@ -44,7 +48,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public int regist(MemberBean mBean) {
-		if(dao.findByPK(mBean.getId())!=null){
+		if(dao.findByPK(mBean.getId())==null){
 			return dao.insert(mBean);
 		}
 		return 0;
@@ -105,4 +109,26 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return loginOk;
 	}
+	public SubjectMember makeSM(MemberBean mb,SubjectBean sb){
+		SubjectMember sm = new SubjectMember();
+		sm.setId(mb.getId());
+		sm.setPw(mb.getPw());
+		sm.setName(mb.getName());
+		sm.setEmail(mb.getEmail());
+		sm.setSsn(mb.getSsn());
+		sm.setPhone(mb.getPhone());
+		sm.setProfileImg(mb.getProfileImg());
+		sm.setRegDate(mb.getRegDate());
+		sm.setMajor(sb.getMajor());
+		sm.setSubjects(sb.getSubjects());
+		return sm;
+	}
+	@Override
+	public SubjectMember findSmById(String id) {
+		MemberBean mb = dao.findByPK(id);
+		SubjectBean sb = sdao.findById(id);
+		return this.makeSM(mb, sb);
+	}
+	
+
 }

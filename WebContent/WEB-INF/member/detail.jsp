@@ -8,7 +8,7 @@
 		<h1>회원 정보</h1>
 		<table id="member_detail">
 			<tr>
-				<td rowspan="5" style="width: 30%;"><img src="${img}/member/${user.profileImg}" width="300" height="300" /></td>
+				<td rowspan="6" style="width: 30%;"><img src="${img}/member/${user.profileImg}" width="300" height="300" /></td>
 				<td class="fontBold bg_color_yellow" style="width: 20%;">ID</td>
 				<td style="width: 40%;">${user.id}</td>
 			</tr>
@@ -21,12 +21,20 @@
 				<td>${user.email }</td>
 			</tr>
 			<tr>
+				<td class="fontBold bg_color_yellow">학과</td>
+				<td>${user.major }</td>
+			</tr>
+			<tr>
 				<td class="fontBold bg_color_yellow">번호</td>
 				<td>${user.phone }</td>
 			</tr>
 			<tr>
 				<td class="fontBold bg_color_yellow">성별</td>
 				<td >${user.gender }</td>
+			</tr>
+			<tr>
+				<td class="fontBold bg_color_yellow">수강과목</td>
+				<td colspan="2">${user.subjects }</td>
 			</tr>
 			<tr>
 				<td class="fontBold bg_color_yellow">생년월일</td>

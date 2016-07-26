@@ -19,11 +19,11 @@
 			<input type="radio" name="major" value="eng" /> 영문학부 <br /> <br />
 			<span class="meta">수강과목</span>  
 			<input type="checkbox" name="subject" value="java"/> Java
-			<input type="checkbox" name="subject" value="sql"/> SQL
+			<input type="checkbox" name="subject" value="SQL"/> SQL
 			<input type="checkbox" name="subject" value="cpp"/> C++
 			<input type="checkbox" name="subject" value="python"/> 파이썬
 			<input type="checkbox" name="subject" value="delphi"/> 델파이
-			<input type="checkbox" name="subject" value="html"/> HTML <br /> <br /><br />
+			<input type="checkbox" name="subject" value="HTML"/> HTML <br /> <br /><br />
 			
 			<input class="btn" type="submit" value="회원가입" />
 			<input class="btn" type="reset" value="취 소"/>

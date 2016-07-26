@@ -9,13 +9,12 @@ package global;
 
 public class Test {
 	public static void main(String[] args) {
-		String str = "/global/member/home.do";
-		System.out.println();
-		String path = str;
-		
-		String result = path.substring(path.lastIndexOf("/")+1, path.indexOf("."));
+		String[] values = {"java","html","c++","sql"};
+		String result = "";
+		int i=0;
+		for (; i < values.length; i++) {
+			result += (i==values.length-1) ? values[i] : values[i]+":";
+		}
 		System.out.println(result);
-		path = path.substring(0, path.indexOf("/"+result));
-		System.out.println(path);
 	}
 }
