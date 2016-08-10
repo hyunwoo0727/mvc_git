@@ -1,6 +1,6 @@
 var context = {
 		name : '',
-		setName : function(param){
+		setContext : function(param){
 			console.log('SET CONTEXT : '+param);
 			this.name = param;
 		},
@@ -16,7 +16,7 @@ var context = {
 		},
 		init : function(param) {
 			console.log('CONTEXT : '+param);
-			this.setName(param);
+			this.setContext(param);
 			var bt_bom = document.querySelector('#bt_bom');
 			var bt_dom = document.querySelector('#bt_dom');
 			var bt_kaup = document.querySelector('#bt_kaup');
@@ -24,6 +24,7 @@ var context = {
 			bt_bom.addEventListener('click',this.bom_go,false);
 			bt_dom.addEventListener('click',this.dom_go,false);
 			bt_creator.addEventListener('click',this.creator_go,false);
+			
 		}
 };
 
