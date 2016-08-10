@@ -11,7 +11,7 @@ var context = {
 			location.href=this.name+'/douglas.do?page=dom';
 		},
 		creator_go : function(){
-			console.log('CONTEX 22 : '+ this.name);
+			console.log('CONTEX : '+ this.name);
 			location.href=this.name+'/douglas.do?page=creator';
 		},
 		init : function(param) {
