@@ -1,33 +1,32 @@
 var context = {
 		name : '',
-		setContext : function(param){
-			console.log('SET CONTEXT : '+param);
-			this.name = param;
+		setContext : function(context){
+			console.log('SET CONTEXT : '+context);
+			this.name = context;
+		},
+		init : function(context) {
+			var bt_bom = document.querySelector('#bt_bom');
+			var bt_dom = document.querySelector('#bt_dom');
+			var bt_kaup = document.querySelector('#bt_kaup');
+			var bt_creator = document.querySelector('#bt_creator');
+			console.log('CONTEXT : '+context);
+			this.setContext(context	);
+			bt_bom.addEventListener('click',this.bom_go,false);
+			bt_dom.addEventListener('click',this.dom_go,false);
+			bt_creator.addEventListener('click',this.creator_go,false);	
 		},
 		bom_go : function(){
-			location.href=this.name+'/douglas.do?page=bom';
+			location.href= this.name + '/douglas.do?page=bom';
 		},
 		dom_go : function(){
 			location.href=this.name+'/douglas.do?page=dom';
 		},
 		creator_go : function(){
 			console.log('CONTEX : '+ this.name);
-			location.href=this.name+'/douglas.do?page=creator';
-		},
-		init : function(param) {
-			console.log('CONTEXT : '+param);
-			this.setContext(param);
-			var bt_bom = document.querySelector('#bt_bom');
-			var bt_dom = document.querySelector('#bt_dom');
-			var bt_kaup = document.querySelector('#bt_kaup');
-			var bt_creator = document.querySelector('#bt_creator');
-			bt_bom.addEventListener('click',this.bom_go,false);
-			bt_dom.addEventListener('click',this.dom_go,false);
-			bt_creator.addEventListener('click',this.creator_go,false);
-			
+			location.href= this.name+'/douglas.do?page=creator';
 		}
+		
 };
-
 function creator_init() {
 	document.querySelector('#bt_spec_show').addEventListener('click',member_spec,false);
 	document.querySelector('#bt_make_account').addEventListener('click',open_account,false);
