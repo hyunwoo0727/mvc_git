@@ -60,7 +60,7 @@ public class MemberBean implements Serializable {
 	public void setSsn(String ssn) {
 		int sCode = Integer.parseInt(ssn.split("-")[1]);
 		this.gender = (sCode + 10) % 2 == 0 ? "여" : "남";
-		int nowYear = Integer.parseInt(regDate.substring(0, 4));
+		int nowYear = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date(System.currentTimeMillis())));
 		int ageYear = Integer.parseInt(ssn.substring(0, 2));
 		switch (sCode) {
 		case 1:	case 2:	case 5:	case 6:

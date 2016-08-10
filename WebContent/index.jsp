@@ -4,13 +4,14 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Insert title here</title>
+	<script src="${js}/index.js" ></script>
 </head>
 <body>
 	<div>
-<%-- 		<form action="${context}/home.do">
-			<input type="submit" value="HOME" />	
-		</form> --%>
-		<a href="${context}/home.do">홈으러zzzz</a>
+		<a href="#" id="atag">홈으러zzzz</a>
 	</div>
 </body>
+<script>	
+	window.onload=start("${context}");
+</script>
 </html>
